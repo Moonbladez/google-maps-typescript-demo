@@ -100438,7 +100438,12 @@ function () {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
     };
-  }
+  } //methods
+
+
+  User.prototype.markerContent = function () {
+    return "<div>Name: " + this.name + " " + this.surname + "</div>\n            <div>Email: " + this.email + "</div>\n    \n    ";
+  };
 
   return User;
 }();
@@ -100470,7 +100475,12 @@ function () {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
     };
-  }
+  } //method
+
+
+  Company.prototype.markerContent = function () {
+    return "\n    <div>\n      <h1>" + this.name + "</h1>\n    </div>\n    <div>\n      <q>" + this.catchphrase + "</q> \n    </div>\n    \n    \n    ";
+  };
 
   return Company;
 }();
@@ -100509,7 +100519,7 @@ function () {
     });
     marker.addListener("click", function () {
       var infoWindow = new google.maps.InfoWindow({
-        content: "Hi there"
+        content: mappable.markerContent()
       });
       infoWindow.open(_this.googleMap, marker);
     });
